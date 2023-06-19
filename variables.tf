@@ -1,3 +1,9 @@
+variable "aws-region" {
+    description = "this variable having aws region"
+    type = string
+    default = "ap-south-1"
+  }
+
 variable "vpc-dev" {
     description = "this variable having vpc cidr value"
     type = string
