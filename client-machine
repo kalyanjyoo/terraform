@@ -1,14 +1,24 @@
-install kubectl on linux
---------------------------------
-curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.26.4/2023-05-11/bin/linux/amd64/kubectl
-kubectl version --short --client
 
-install awscli
--------------------
+launch a amazon linux instance (t2.micro)
+sudo -i
+yum update -y
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.25.6/2023-01-30/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+kubectl version
+kubectl version --short --client
+ls -lart
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
-
+aws --version
 aws configure
 aws eks list-clusters
-aws eks update-kubeconfig --name
+aws eks update-kubeconfig --name clustername --region regionname
+cat /root/.kube/config
+kubectl get all -A
+kubectl get ns
+kubectl get nodes -o wide
+kubectl get pods -o wide
+kubectl get events
