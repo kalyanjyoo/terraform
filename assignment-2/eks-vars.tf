@@ -8,7 +8,7 @@ variable "cluster-name" {
 variable "cluster-version" {
     description = "Kubernetes minor version to use for the EKS cluster (for example 1.25)"
     type = string
-    default = null
+    default = "1.25"
   }
 variable "iamrole-cluster" {
     description = "this variable having iamrole for cluster."
