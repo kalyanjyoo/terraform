@@ -1,22 +1,7 @@
 # Create IAM Role for eks master
 resource "aws_iam_role" "eks-master-role" {
   name = "${var.iamrole-cluster}"
-
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "eks.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-POLICY
-}
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
 
 # Associate IAM Policy to IAM Role
 resource "aws_iam_role_policy_attachment" "eks-AmazonEKSClusterPolicy" {
