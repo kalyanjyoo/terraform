@@ -2,6 +2,7 @@
 resource "aws_iam_role" "eks-nodegroup-role" {
   name = "${var.iamrole-nodegroup}"
   assume_role_policy = data.aws_iam_policy_document.assume_role_node.json
+}
 
 resource "aws_iam_role_policy_attachment" "eks-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
