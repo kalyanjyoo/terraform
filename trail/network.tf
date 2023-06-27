@@ -45,7 +45,7 @@ resource "aws_route" "public-route" {
 
 # Resource-14: Associate the Route Table with the public Subnet
 resource "aws_route_table_association" "public-rt-associate" {
-  count          = length(var.private-subnet-cidrs)
+  count          = length(var.public-subnet-cidrs)
   route_table_id = aws_route_table.public-route-table.id
   subnet_id = aws_subnet.public[count.index].id
 }
